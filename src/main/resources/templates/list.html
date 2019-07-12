@@ -8,7 +8,7 @@
 </head>
 <body style="background-color: lightsteelblue">
 <div style="margin: 50px" class="container">
-    <div th:each="resume : ${resumes}">
+    <div style="margin: 50px" th:each="resume : ${resumes}">
     <h2 th:text="${resume.name}"></h2>
     <strong>E-mail:</strong>
     <p th:text="${resume.email}"></p>
