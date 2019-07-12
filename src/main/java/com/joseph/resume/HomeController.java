@@ -31,6 +31,7 @@ public class HomeController {
     @RequestMapping("/")
     public String list(Model model) {
         model.addAttribute("resumes", resumeRepository.findAll());
+        model.addAttribute("set", new Recruiter());
         return "list";
     }
 
@@ -40,6 +41,27 @@ public class HomeController {
         addToModel(model, resume);
         model.addAttribute("resume", resume);
         return "view";
+    }
+
+    @RequestMapping("/edit/{id}")
+    public String edit(@PathVariable("id") long id, Model model) {
+        Resume resume = resumeRepository.findById(id).get();
+        addToModel(model, resume);
+        model.addAttribute("resume", resume);
+        return "form";
+    }
+
+    @GetMapping("/result")
+    public String find(Model model, Recruiter recruiter) {
+        String finds = "";
+        for (Skill skill : skillRepository.findAll()) {
+            if (skill.getDescription().toLowerCase().contains(recruiter.getWord().toLowerCase())) {
+                finds += (resumeRepository.findById(skill.getParentId()).get().getName()) + "\n";
+            }
+        }
+        recruiter.setSet(finds);
+        model.addAttribute("set", recruiter);
+        return "find";
     }
 
     @GetMapping("/add")
@@ -55,6 +77,7 @@ public class HomeController {
         }
         resumeRepository.save(resume);
         model.addAttribute("resumes", resumeRepository.findAll());
+        model.addAttribute("set", new Recruiter());
         return "list";
     }
 
