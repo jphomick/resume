@@ -13,7 +13,7 @@ public class Resume {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @NonNull
     private String name;
@@ -24,26 +24,20 @@ public class Resume {
     @NonNull
     private String phone;
 
-    private ArrayList<String> achievements;
-
-    private ArrayList<String> experience;
-
-    private ArrayList<String> skills;
+    @NonNull
+    private ArrayList<Education> achievements = new ArrayList<>();
 
     @NonNull
-    private String aRaw;
+    private ArrayList<Experience> experience = new ArrayList<>();
 
     @NonNull
-    private String eRaw;
+    private ArrayList<Skill> skills = new ArrayList<>();
 
-    @NonNull
-    private String sRaw;
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -71,51 +65,27 @@ public class Resume {
         this.phone = phone;
     }
 
-    public ArrayList<String> getAchievements() {
+    public ArrayList<Education> getAchievements() {
         return achievements;
     }
 
-    public void setAchievements(ArrayList<String> achievements) {
+    public void setAchievements(ArrayList<Education> achievements) {
         this.achievements = achievements;
     }
 
-    public ArrayList<String> getExperience() {
+    public ArrayList<Experience> getExperience() {
         return experience;
     }
 
-    public void setExperience(ArrayList<String> experience) {
+    public void setExperience(ArrayList<Experience> experience) {
         this.experience = experience;
     }
 
-    public ArrayList<String> getSkills() {
+    public ArrayList<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(ArrayList<String> skills) {
+    public void setSkills(ArrayList<Skill> skills) {
         this.skills = skills;
-    }
-
-    public String getaRaw() {
-        return aRaw;
-    }
-
-    public void setaRaw(String aRaw) {
-        this.aRaw = aRaw;
-    }
-
-    public String geteRaw() {
-        return eRaw;
-    }
-
-    public void seteRaw(String eRaw) {
-        this.eRaw = eRaw;
-    }
-
-    public String getsRaw() {
-        return sRaw;
-    }
-
-    public void setsRaw(String sRaw) {
-        this.sRaw = sRaw;
     }
 }
