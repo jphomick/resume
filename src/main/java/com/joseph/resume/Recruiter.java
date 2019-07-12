@@ -19,7 +19,7 @@ public class Recruiter {
     private String word;
 
     @NonNull
-    private String set;
+    private ArrayList<String> set;
 
     public long getId() {
         return id;
@@ -29,19 +29,19 @@ public class Recruiter {
         this.id = id;
     }
 
-    public String getSet() {
-        return set;
-    }
-
-    public void setSet(String set) {
-        this.set = set;
-    }
-
     public String getWord() {
         return word;
     }
 
     public void setWord(String word) {
         this.word = word;
+    }
+
+    public ArrayList<String> getSet() {
+        return set;
+    }
+
+    public void setSet(ArrayList<String> set) {
+        this.set = set;
     }
 }

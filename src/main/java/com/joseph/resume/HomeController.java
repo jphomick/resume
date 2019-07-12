@@ -53,10 +53,10 @@ public class HomeController {
 
     @GetMapping("/result")
     public String find(Model model, Recruiter recruiter) {
-        String finds = "";
+        ArrayList<String> finds = new ArrayList<>();
         for (Skill skill : skillRepository.findAll()) {
             if (skill.getDescription().toLowerCase().contains(recruiter.getWord().toLowerCase())) {
-                finds += (resumeRepository.findById(skill.getParentId()).get().getName()) + "\n";
+                finds.add(resumeRepository.findById(skill.getParentId()).get().getName());
             }
         }
         recruiter.setSet(finds);
